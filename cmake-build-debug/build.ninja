@@ -91,12 +91,12 @@ build CMakeFiles/C_Schulung.dir/first_day/schleifen.c.o: C_COMPILER__C_Schulung_
   OBJECT_DIR = CMakeFiles/C_Schulung.dir
   OBJECT_FILE_DIR = CMakeFiles/C_Schulung.dir/first_day
 
-build CMakeFiles/C_Schulung.dir/first_day/arrays.c.o: C_COMPILER__C_Schulung_unscanned_Debug /Users/jules/Library/Mobile$ Documents/com~apple~CloudDocs/Second$ Brain/Bildung/Studium/Praxis/C-Schulung/first_day/arrays.c || cmake_object_order_depends_target_C_Schulung
-  DEP_FILE = CMakeFiles/C_Schulung.dir/first_day/arrays.c.o.d
+build CMakeFiles/C_Schulung.dir/second_day/arrays.c.o: C_COMPILER__C_Schulung_unscanned_Debug /Users/jules/Library/Mobile$ Documents/com~apple~CloudDocs/Second$ Brain/Bildung/Studium/Praxis/C-Schulung/second_day/arrays.c || cmake_object_order_depends_target_C_Schulung
+  DEP_FILE = CMakeFiles/C_Schulung.dir/second_day/arrays.c.o.d
   FLAGS = -g -std=gnu2x -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk -fcolor-diagnostics
   INCLUDES = -I"/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung/first_day"
   OBJECT_DIR = CMakeFiles/C_Schulung.dir
-  OBJECT_FILE_DIR = CMakeFiles/C_Schulung.dir/first_day
+  OBJECT_FILE_DIR = CMakeFiles/C_Schulung.dir/second_day
 
 
 # =============================================================================
@@ -106,7 +106,7 @@ build CMakeFiles/C_Schulung.dir/first_day/arrays.c.o: C_COMPILER__C_Schulung_uns
 #############################################
 # Link the executable C_Schulung
 
-build C_Schulung: C_EXECUTABLE_LINKER__C_Schulung_Debug CMakeFiles/C_Schulung.dir/main.c.o CMakeFiles/C_Schulung.dir/first_day/taylor_reihe.c.o CMakeFiles/C_Schulung.dir/first_day/operatoren.c.o CMakeFiles/C_Schulung.dir/first_day/bedingungen.c.o CMakeFiles/C_Schulung.dir/first_day/methoden.c.o CMakeFiles/C_Schulung.dir/first_day/schleifen.c.o CMakeFiles/C_Schulung.dir/first_day/arrays.c.o
+build C_Schulung: C_EXECUTABLE_LINKER__C_Schulung_Debug CMakeFiles/C_Schulung.dir/main.c.o CMakeFiles/C_Schulung.dir/first_day/taylor_reihe.c.o CMakeFiles/C_Schulung.dir/first_day/operatoren.c.o CMakeFiles/C_Schulung.dir/first_day/bedingungen.c.o CMakeFiles/C_Schulung.dir/first_day/methoden.c.o CMakeFiles/C_Schulung.dir/first_day/schleifen.c.o CMakeFiles/C_Schulung.dir/second_day/arrays.c.o
   FLAGS = -g -arch arm64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.0.sdk
   OBJECT_DIR = CMakeFiles/C_Schulung.dir
   POST_BUILD = :

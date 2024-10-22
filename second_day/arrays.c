@@ -6,15 +6,15 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "../first_day/first.h"
+#include "second.h"
 
 struct Datensatz {
-    double* values;
+    double *values;
     int size;
 };
 
 struct Matrix {
-    double** content;
+    double **content;
     int rowCount;
     int colCount;
 };
@@ -45,7 +45,7 @@ double abweichung(const struct Datensatz values) {
     for (int i = 0; i < values.size; i++) {
         gesamt += pow(values.values[i] - m, 2);
     }
-    return sqrt(gesamt/values.size);
+    return sqrt(gesamt / values.size);
 }
 
 double array_median(const struct Datensatz values) {
@@ -71,9 +71,9 @@ struct Matrix get_matrix() {
     struct Matrix m;
     m.rowCount = a;
     m.colCount = b;
-    m.content = (double**)malloc(a * sizeof(double*));
+    m.content = (double **) malloc(a * sizeof(double *));
     for (int i = 0; i < a; ++i) {
-        m.content[i] = (double*)malloc(b * sizeof(double));
+        m.content[i] = (double *) malloc(b * sizeof(double));
     }
     for (int z = 0; z < a; ++z) {
         int zeilennummer = z + 1;
@@ -94,9 +94,9 @@ struct Matrix m_add(const struct Matrix a, const struct Matrix b) {
     struct Matrix r;
     r.rowCount = a.rowCount;
     r.colCount = b.colCount;
-    r.content = (double**)malloc(a.rowCount * sizeof(double*));
+    r.content = (double **) malloc(a.rowCount * sizeof(double *));
     for (int i = 0; i < a.rowCount; ++i) {
-        r.content[i] = (double*)malloc(a.colCount * sizeof(double));
+        r.content[i] = (double *) malloc(a.colCount * sizeof(double));
     }
     for (int z = 0; z < a.rowCount; ++z) {
         for (int s = 0; s < b.colCount; ++s) {
@@ -112,15 +112,15 @@ struct Matrix m_multiply(const struct Matrix a, const struct Matrix b) {
     r.colCount = b.colCount;
     r.rowCount = a.rowCount;
     r.colCount = b.colCount;
-    r.content = (double**)malloc(a.rowCount * sizeof(double*));
+    r.content = (double **) malloc(a.rowCount * sizeof(double *));
     for (int i = 0; i < a.rowCount; ++i) {
-        r.content[i] = (double*)malloc(a.colCount * sizeof(double));
+        r.content[i] = (double *) malloc(a.colCount * sizeof(double));
     }
     for (int z = 0; z < a.rowCount; ++z) {
         for (int s = 0; s < b.colCount; ++s) {
             double result = 0;
             for (int i = 0; i < a.colCount; i++) {
-                result += a.content[z][i] * b.content[s][i];
+                result += a.content[z][i] * b.content[i][s];
             }
             r.content[z][s] = result;
         }
@@ -133,7 +133,7 @@ int arrays() {
     printf("Wie viele Werte enthält die Messreihe? ");
     int size;
     scanf("%i", &size);
-    double* values = malloc(size * sizeof(double));
+    double *values = malloc(size * sizeof(double));
     if (values == NULL) {
         printf("Error\n");
         return EXIT_FAILURE;
