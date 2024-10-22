@@ -14,4 +14,5 @@ add_executable(
         first_day/schleifen.c
         second_day/arrays.c
         second_day/second.h
+        second_day/pointer.c
 )

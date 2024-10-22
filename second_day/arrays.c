@@ -2,9 +2,9 @@
 // Created by Julian Schumacher on 22.10.24.
 //
 
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 
 #include "second.h"
 

@@ -6,6 +6,6 @@
 
 
 int main(void) {
-    arrays();
+    pointer();
     return 0;
 }

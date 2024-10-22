@@ -8,4 +8,7 @@
 // ARRAYS
 int arrays();
 
+// POINTER
+void pointer();
+
 #endif //SECOND_H
