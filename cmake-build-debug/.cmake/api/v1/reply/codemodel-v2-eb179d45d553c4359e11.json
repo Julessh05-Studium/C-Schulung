@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "C_Schulung::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-C_Schulung-Debug-8bc9fb41c37fc100e835.json",
+					"jsonFile" : "target-C_Schulung-Debug-9e5e90cd4302a70896d1.json",
 					"name" : "C_Schulung",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung/cmake-build-debug",
-		"source" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung"
+		"build" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung/cmake-build-debug",
+		"source" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung"
 	},
 	"version" : 
 	{

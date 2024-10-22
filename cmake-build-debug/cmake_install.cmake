@@ -1,4 +1,4 @@
-# Install script for directory: /Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung
+# Install script for directory: /Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

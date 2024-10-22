@@ -118,7 +118,11 @@ struct Matrix m_multiply(const struct Matrix a, const struct Matrix b) {
     }
     for (int z = 0; z < a.rowCount; ++z) {
         for (int s = 0; s < b.colCount; ++s) {
-            r.content[z][s] = a.content[z][s] * b.content[s][z];
+            double result = 0;
+            for (int i = 0; i < a.colCount; i++) {
+                result += a.content[z][i] * b.content[s][i];
+            }
+            r.content[z][s] = result;
         }
     }
     return r;

@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung/cmake-build-debug"
+			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -383,7 +383,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -443,7 +443,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung"
+			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung"
 		},
 		{
 			"name" : "CMAKE_INSTALL_NAME_TOOL",
@@ -1031,7 +1031,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung/cmake-build-debug"
+			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung/cmake-build-debug"
 		},
 		{
 			"name" : "C_Schulung_IS_TOP_LEVEL",
@@ -1055,7 +1055,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C:C++ Schulung/C Schulung"
+			"value" : "/Users/jules/Library/Mobile Documents/com~apple~CloudDocs/Second Brain/Bildung/Studium/Praxis/C-Schulung"
 		}
 	],
 	"kind" : "cache",
