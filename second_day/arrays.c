@@ -6,7 +6,7 @@
 #include <stdlib.h>
 #include <math.h>
 
-#include "first.h"
+#include "../first_day/first.h"
 
 struct Datensatz {
     double* values;

@@ -12,5 +12,6 @@ add_executable(
         first_day/bedingungen.c
         first_day/methoden.c
         first_day/schleifen.c
-        first_day/arrays.c
+        second_day/arrays.c
+        second_day/second.h
 )

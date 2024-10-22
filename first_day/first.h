@@ -20,7 +20,4 @@ void methoden();
 // SCHLEIFEN
 void schleifen();
 
-// ARRAYS
-int arrays();
-
 #endif //FIRST_H

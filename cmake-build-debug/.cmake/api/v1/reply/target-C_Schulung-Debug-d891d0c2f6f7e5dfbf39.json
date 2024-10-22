@@ -110,6 +110,13 @@
 				5,
 				6
 			]
+		},
+		{
+			"name" : "Header Files",
+			"sourceIndexes" : 
+			[
+				7
+			]
 		}
 	],
 	"sources" : 
@@ -155,6 +162,11 @@
 			"compileGroupIndex" : 0,
 			"path" : "first_day/arrays.c",
 			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"path" : "second_day/second.h",
+			"sourceGroupIndex" : 1
 		}
 	],
 	"type" : "EXECUTABLE"
