@@ -31,13 +31,36 @@ void dynamicArray() {
 }
 
 
-void append(struct Element *base, struct Element *new) {
-    struct Element *tmp = base;
+void append(struct Element **base, struct Element *new) {
+    struct Element *tmp = *base;
     while (tmp->next != nullptr) {
         tmp = tmp->next;
     }
     tmp->next = new;
     new->next = nullptr;
+}
+
+void removeElementFromList(struct Element **base, int id) {
+    struct Element *last = nullptr;
+    struct Element *tmp = *base;
+    while (tmp->id != id) {
+        last = tmp;
+        tmp = tmp->next;
+    }
+    last->next = tmp->next;
+    free(tmp);
+}
+
+void printList(struct Element **base) {
+    struct Element *tmp = *base;
+    printf("List:\n");
+    do {
+        printf("Name: %s\n", tmp->name);
+        printf("Age: %i\n", tmp->age);
+        printf("ID: %i\n\n", tmp->id);
+        tmp = tmp->next;
+    } while (tmp != nullptr);
+    printf("End of list\n\n");
 }
 
 void linked_list() {
@@ -47,36 +70,35 @@ void linked_list() {
     int counter = 0;
     bool newItem = true;
     struct Element *current;
-    struct Element *last = nullptr;
+    const struct Element *last = nullptr;
     while (newItem) {
         current = malloc(sizeof(struct Element));
         printf("Name: ");
         scanf("%s", &current->name);
         printf("Age: ");
         scanf("%i", &current->age);
-        current->id = counter++;
+        current->id = counter;
+        counter = counter + 1;
+        printf("Counter %i\n", counter);
         current->next = nullptr;
         if (last != nullptr) {
-            append(last, current);
+            append(&list.head, current);
         } else {
             list.head = current;
         }
         last = current;
         printf("\nNew Element? ");
         scanf("%d", &newItem);
+        printf("\n");
     }
     current = list.head;
-    printf("List:\n");
-    do {
-        printf("Name: %s\n", current->name);
-        printf("Age: %i\n", current->age);
-        printf("ID: %i\n\n", current->id);
-        current = current->next;
-    } while (current != nullptr);
-    printf("End of list");
+    printList(&current);
     current = list.head;
+    printf("Deleting List:\n");
     do {
-        current = current->next;
+        removeElementFromList(&list.head, current->id);
+        printList(&current);
         free(current->next);
+        current = current->next;
     } while (current != nullptr);
 }
