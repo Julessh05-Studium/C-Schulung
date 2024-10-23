@@ -1,7 +1,9 @@
-#include "second_day/second.h"
+#include <stdio.h>
+#include <_stdlib.h>
 
+#include "third_day/third.h"
 
-int main(void) {
-    pointer();
-    return 0;
+int main() {
+    linked_list();
+    return EXIT_SUCCESS;
 }

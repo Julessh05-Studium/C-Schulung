@@ -15,4 +15,7 @@ add_executable(
         second_day/arrays.c
         second_day/second.h
         second_day/pointer.c
+        third_day/third.h
+        third_day/data_types.c
+        third_day/linked_list.c
 )
