@@ -6,17 +6,17 @@
 
 #include "first.h"
 
-bool februarTage(int y) {
+bool februarTage(const int y) {
     return y % 4 == 0 && (y % 100 != 0 || y % 400 == 0);
 }
 
-double cmInch(double input, char type) {
-    const double f = 2.54;
+double cmInch(const double input, const char type) {
+    constexpr double f = 2.54;
     return type == 'c' ? input / f : input * f;
 }
 
 // TODO: update sort
-void sort(int inputArr[3], int* sortedArr) {
+void sort(const int inputArr[3], int *sortedArr) {
     for (int i = 0; i < 3; i++) {
         sortedArr[i] = inputArr[i];
     }
@@ -47,7 +47,7 @@ int bedingungen() {
     printf("Drei Zahlen zum Sortieren: ");
     int a, b, c;
     scanf("%i %i %i", &a, &b, &c);
-    int arr[3] = {a, b, c};
+    const int arr[3] = {a, b, c};
     int arrSorted[3];
     sort(arr, &arrSorted);
     printf("Sortiert: %i, %i, %i", arrSorted[0], arrSorted[1], arrSorted[2]);

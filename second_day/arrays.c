@@ -50,7 +50,7 @@ double abweichung(const struct Datensatz values) {
 
 double array_median(const struct Datensatz values) {
     bubble_sort(values);
-    int mid = values.size / 2;
+    const int mid = values.size / 2;
     return values.values[mid];
 }
 
@@ -76,10 +76,10 @@ struct Matrix get_matrix() {
         m.content[i] = (double *) malloc(b * sizeof(double));
     }
     for (int z = 0; z < a; ++z) {
-        int zeilennummer = z + 1;
+        const int zeilennummer = z + 1;
         printf("\nNachfolgend die Daten für Zeile %i:\n", zeilennummer);
         for (int s = 0; s < b; ++s) {
-            int spaltennummer = s + 1;
+            const int spaltennummer = s + 1;
             printf("Zahl eingeben in Zeile %i und Spalte %i ", zeilennummer, spaltennummer);
             double temp;
             scanf("%lf", &temp);

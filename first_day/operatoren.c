@@ -12,7 +12,7 @@ double temperaturberechnen(const double celcius) {
     return celcius + 273;
 }
 
-double kreisberechnen(double rad) {
+double kreisberechnen(const double rad) {
     return 2 * M_PI * rad;
 }
 
@@ -51,5 +51,5 @@ void operatoren() {
     printf("Wahrheitswert 2 zum testen: ");
     int b;
     scanf("%d", &b);
-    printf("Wahrheitswert: %d", boolscherAusdruck((bool)a, (bool)b));
+    printf("Wahrheitswert: %d", boolscherAusdruck((bool) a, (bool) b));
 }

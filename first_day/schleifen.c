@@ -6,7 +6,7 @@
 
 #include "first.h"
 
-double zins(double betrag, double zinssatz, int dauer) {
+double zins(double betrag, const double zinssatz, const int dauer) {
     for (int i = 0; i <= dauer; i++) {
         betrag = betrag + betrag * zinssatz;
     }
@@ -29,7 +29,7 @@ double archimedes(int zahl, int n) {
 }
 
 
-void zahlenAuflisten(int zahl, bool gerade) {
+void zahlenAuflisten(const int zahl, const bool gerade) {
     int i;
     if (gerade) {
         i = 0;
@@ -41,13 +41,13 @@ void zahlenAuflisten(int zahl, bool gerade) {
     }
 }
 
-void zahlenreihe(int steps) {
+void zahlenreihe(const int steps) {
     for (int i = steps; i < 100; i = i + steps) {
         printf("%i, ", i);
     }
 }
 
-int summieren(int max) {
+int summieren(const int max) {
     int result = 0;
     for (int i = 1; i <= max; i++) {
         result += i;
@@ -55,7 +55,7 @@ int summieren(int max) {
     return result;
 }
 
-double potenzieren(double a, int b) {
+double potenzieren(const double a, const int b) {
     double result = 0;
     for (int i = 0; i < b; i++) {
         result *= a;
@@ -64,7 +64,7 @@ double potenzieren(double a, int b) {
     // ODER: return math.pow(a, b);
 }
 
-double fakult(int zahl) {
+double fakult(const int zahl) {
     double result = 0;
     for (int i = 1; i < zahl; i++) {
         result *= i;
@@ -78,12 +78,12 @@ int medianFinden(
     const int c,
     const int d,
     const int e
-    ) {
+) {
     int arr[5] = {a, b, c, d, e};
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 4 - i; j++) {
             if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
+                const int temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
@@ -103,7 +103,7 @@ void schleifen() {
     printf("Laufzeit (Jahre): ");
     int laufzeit;
     scanf("%i", &laufzeit);
-    double endkapital = zins(betrag, zinssatz, laufzeit);
+    const double endkapital = zins(betrag, zinssatz, laufzeit);
     printf("Endkapital: %lf, davon Zinsen: %lf\n", endkapital, endkapital - betrag);
 
     oneOone();
@@ -143,6 +143,4 @@ void schleifen() {
     int medianZahla, medianZahlb, medianZahlc, medianZahld, medianZahle;
     scanf("%i, %i, %i, %i, %i", &medianZahla, &medianZahlb, &medianZahlc, &medianZahld, &medianZahle);
     printf("Der Median ist %i", medianFinden(medianZahla, medianZahlb, medianZahlc, medianZahlc, medianZahle));
-
-
 }

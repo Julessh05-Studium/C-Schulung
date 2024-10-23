@@ -26,8 +26,8 @@ double median(const double a, const double b, const double c) {
     return (a + b + c) / 3;
 }
 
-void fibonacci(int current, int last) {
-    int next = current + last;
+void fibonacci(const int current, const int last) {
+    const int next = current + last;
     if (current > 200) {
         return;
     }

@@ -13,7 +13,7 @@ void pointer_actual_sort(int *a, int *b, int *c) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 2; j++) {
             if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
+                const int temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
@@ -41,7 +41,7 @@ void schachbrett() {
     }
     for (int i = 0; i < 8; i++) {
         for (int j = 0; j < 8; j++) {
-            bool versetzt = i % 2 == 0;
+            const bool versetzt = i % 2 == 0;
             if (j % 2 == 0 ^ versetzt) {
                 schachbrett[i][j] = '#';
             } else {
@@ -111,7 +111,7 @@ void pointer() {
     pointer_sort();
     schachbrett();
     textChange();
-    float koordinaten[4] = {1, 6, 5, 7};
+    constexpr float koordinaten[4] = {1, 6, 5, 7};
     float ergebnisse[2] = {};
     printf("Rechteck hat F: %d\n", rechteck(&koordinaten, &ergebnisse));
     printf("Rechteck F: %lf, U: %lf", ergebnisse[0], ergebnisse[1]);
