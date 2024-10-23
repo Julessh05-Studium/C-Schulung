@@ -40,7 +40,7 @@ void append(struct Element **base, struct Element *new) {
     new->next = nullptr;
 }
 
-void removeElementFromList(struct Element **base, int id) {
+void removeElementFromList(struct Element **base, const int id) {
     struct Element *last = nullptr;
     struct Element *tmp = *base;
     while (tmp->id != id) {
@@ -63,11 +63,13 @@ void printList(struct Element **base) {
     printf("End of list\n\n");
 }
 
+// REMEMBER: Works only outside of function
+int counter = 0;
+
 void linked_list() {
     struct LinkedList list;
     struct Element first;
     list.head = &first;
-    int counter = 0;
     bool newItem = true;
     struct Element *current;
     const struct Element *last = nullptr;

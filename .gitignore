@@ -52,4 +52,4 @@ Mkfile.old
 dkms.conf
 
 # C make library
-cmake-build-debug/
+/cmake-build-debug
