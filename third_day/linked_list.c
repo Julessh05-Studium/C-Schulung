@@ -7,17 +7,7 @@
 
 #include "third.h"
 
-struct Element {
-    char name[50];
-    int age;
-    int id;
-    struct Element *next;
-};
-
-struct LinkedList {
-    struct Element *head;
-    int length;
-};
+/* DYNAMIC ARRAY */
 
 void dynamicArray() {
     int size;
@@ -30,6 +20,20 @@ void dynamicArray() {
     free(ptr);
 }
 
+/* LINKED LIST */
+
+struct Element {
+    char name[50];
+    int age;
+    int id;
+    struct Element *next;
+};
+
+struct LinkedList {
+    struct Element *head;
+    int length;
+};
+
 
 void append(struct Element **base, struct Element *new) {
     struct Element *tmp = *base;
@@ -40,9 +44,29 @@ void append(struct Element **base, struct Element *new) {
     new->next = nullptr;
 }
 
-void removeElementFromList(struct Element **base, const int id) {
+void appendToList(const struct LinkedList *list, struct Element *new) {
+    struct Element *tmp = list->head;
+    while (tmp->next != nullptr) {
+        tmp = tmp->next;
+    }
+    tmp->next = new;
+    new->next = nullptr;
+}
+
+void removeNextElement(struct Element **base, const int id) {
     struct Element *last = nullptr;
     struct Element *tmp = *base;
+    while (tmp->id != id) {
+        last = tmp;
+        tmp = tmp->next;
+    }
+    last->next = tmp->next;
+    free(tmp);
+}
+
+void removeElementFromList(const struct LinkedList *list, const int id) {
+    struct Element *last = nullptr;
+    struct Element *tmp = list->head;
     while (tmp->id != id) {
         last = tmp;
         tmp = tmp->next;
@@ -98,7 +122,7 @@ void linked_list() {
     current = list.head;
     printf("Deleting List:\n");
     do {
-        removeElementFromList(&list.head, current->id);
+        removeElementFromList(&list, current->id);
         printList(&current);
         free(current->next);
         current = current->next;
