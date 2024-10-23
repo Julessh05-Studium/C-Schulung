@@ -44,13 +44,17 @@ void append(struct Element **base, struct Element *new) {
     new->next = nullptr;
 }
 
-void appendToList(const struct LinkedList *list, struct Element *new) {
+void appendToList(struct LinkedList *list, struct Element *new) {
     struct Element *tmp = list->head;
-    while (tmp->next != nullptr) {
-        tmp = tmp->next;
+    if (tmp == nullptr) {
+        list->head = new;
+    } else {
+        while (tmp->next != nullptr) {
+            tmp = tmp->next;
+        }
+        tmp->next = new;
+        new->next = nullptr;
     }
-    tmp->next = new;
-    new->next = nullptr;
 }
 
 // TODO: work on (work in progress)
@@ -67,9 +71,12 @@ void removeNextElement(struct Element **base, const int id) {
 
 void removeElementFromList(struct LinkedList *list, const int id) {
     struct Element *tmp = list->head;
-    if (id == tmp->id && tmp->next == nullptr) {
-        list->head = nullptr;
-    } else if (id == tmp->id && tmp->next != nullptr) {
+    if (tmp->next == nullptr) {
+        if (id == tmp->id) {
+            list->head = nullptr;
+        }
+        // only one element, not same id, return from func
+    } else if (id == tmp->id) {
         list->head = tmp->next;
     } else {
         struct Element *last = nullptr;
@@ -88,9 +95,11 @@ void removeElementFromList(struct LinkedList *list, const int id) {
 void printList(const struct LinkedList *list) {
     if (list->head == nullptr) {
         // List is empty
+        printf("List is empty\n");
         return;
     }
     struct Element *tmp = list->head;
+    printf("============================================================\n");
     printf("List:\n");
     do {
         printf("\n");
@@ -99,35 +108,31 @@ void printList(const struct LinkedList *list) {
         printf("ID: %i\n", tmp->id);
         tmp = tmp->next;
     } while (tmp != nullptr);
-    printf("End of list\n\n");
+    printf("\nEnd of list\n\n");
+    printf("============================================================\n");
 }
 
 // REMEMBER: Works only outside of function
-int counter = 0;
+int id_counter = 0;
 
 void linked_list() {
     struct LinkedList list;
-    struct Element first;
-    list.head = &first;
+    list.head = nullptr;
     bool newItem = true;
     struct Element *current;
-    const struct Element *last = nullptr;
     while (newItem) {
         current = malloc(sizeof(struct Element));
         printf("Name: ");
         scanf("%s", &current->name);
         printf("Age: ");
         scanf("%i", &current->age);
-        current->id = counter;
-        counter = counter + 1;
-        printf("Counter %i\n", counter);
+        current->id = id_counter++;
         current->next = nullptr;
-        if (last != nullptr) {
-            append(&list.head, current);
-        } else {
+        if (list.head == nullptr) {
             list.head = current;
+        } else {
+            appendToList(&list, current);
         }
-        last = current;
         printf("\nNew Element? ");
         scanf("%d", &newItem);
         printf("\n");
@@ -139,6 +144,5 @@ void linked_list() {
         removeElementFromList(&list, current->id);
         printList(&list);
         current = current->next;
-        counter++;
     } while (current != nullptr);
 }
