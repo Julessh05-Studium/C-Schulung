@@ -111,7 +111,7 @@ void pointer() {
     pointer_sort();
     schachbrett();
     textChange();
-    constexpr float koordinaten[4] = {1, 6, 5, 7};
+    const float koordinaten[4] = {1, 6, 5, 7};
     float ergebnisse[2] = {};
     printf("Rechteck hat F: %d\n", rechteck(&koordinaten, &ergebnisse));
     printf("Rechteck F: %lf, U: %lf", ergebnisse[0], ergebnisse[1]);

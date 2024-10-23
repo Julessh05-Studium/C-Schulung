@@ -11,7 +11,7 @@ bool februarTage(const int y) {
 }
 
 double cmInch(const double input, const char type) {
-    constexpr double f = 2.54;
+    const double f = 2.54;
     return type == 'c' ? input / f : input * f;
 }
 

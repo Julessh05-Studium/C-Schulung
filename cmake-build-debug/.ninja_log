@@ -30,3 +30,12 @@
 106	166	1729602554871241672	C_Schulung	b6f0f2ba14a282ed
 2	62	1729602571106296253	CMakeFiles/C_Schulung.dir/second_day/pointer.c.o	e63d0dc72a40a2ef
 63	112	1729602571167314093	C_Schulung	b6f0f2ba14a282ed
+5	266	1729662152067877036	CMakeFiles/C_Schulung.dir/main.c.o	327c7cae67435d6c
+5	268	1729662152068316689	CMakeFiles/C_Schulung.dir/first_day/taylor_reihe.c.o	6ec915c54a550d54
+6	273	1729662152068522016	CMakeFiles/C_Schulung.dir/first_day/operatoren.c.o	e49e8462917b2d31
+6	273	1729662152068985627	CMakeFiles/C_Schulung.dir/first_day/methoden.c.o	b0a8bbe3c574766d
+6	273	1729662152069460071	CMakeFiles/C_Schulung.dir/first_day/schleifen.c.o	8f10e6699f756efa
+266	328	1729662152329399021	CMakeFiles/C_Schulung.dir/second_day/arrays.c.o	a3d406e1b8d4edf9
+2	48	1729662175129949372	CMakeFiles/C_Schulung.dir/first_day/bedingungen.c.o	15d794e7c72a961b
+2	63	1729662175130359568	CMakeFiles/C_Schulung.dir/second_day/pointer.c.o	e63d0dc72a40a2ef
+64	236	1729662175191791029	C_Schulung	b6f0f2ba14a282ed
