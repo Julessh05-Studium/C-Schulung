@@ -68,7 +68,7 @@ void removeNextElement(struct Element **base, const int id) {
 void removeElementFromList(struct LinkedList *list, const int id) {
     struct Element *tmp = list->head;
     if (id == tmp->id && tmp->next == nullptr) {
-        tmp->next = nullptr;
+        list->head = nullptr;
     } else if (id == tmp->id && tmp->next != nullptr) {
         list->head = tmp->next;
     } else {
@@ -86,6 +86,10 @@ void removeElementFromList(struct LinkedList *list, const int id) {
 }
 
 void printList(const struct LinkedList *list) {
+    if (list->head == nullptr) {
+        // List is empty
+        return;
+    }
     struct Element *tmp = list->head;
     printf("List:\n");
     do {
