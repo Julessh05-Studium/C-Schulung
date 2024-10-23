@@ -53,6 +53,7 @@ void appendToList(const struct LinkedList *list, struct Element *new) {
     new->next = nullptr;
 }
 
+// TODO: work on (work in progress)
 void removeNextElement(struct Element **base, const int id) {
     struct Element *last = nullptr;
     struct Element *tmp = *base;
@@ -64,24 +65,34 @@ void removeNextElement(struct Element **base, const int id) {
     free(tmp);
 }
 
-void removeElementFromList(const struct LinkedList *list, const int id) {
-    struct Element *last = nullptr;
+void removeElementFromList(struct LinkedList *list, const int id) {
     struct Element *tmp = list->head;
-    while (tmp->id != id) {
-        last = tmp;
-        tmp = tmp->next;
+    if (id == tmp->id && tmp->next == nullptr) {
+        tmp->next = nullptr;
+    } else if (id == tmp->id && tmp->next != nullptr) {
+        list->head = tmp->next;
+    } else {
+        struct Element *last = nullptr;
+        while (tmp->id != id) {
+            if (tmp->next == nullptr) {
+                // ID not found in list
+                return;
+            }
+            last = tmp;
+            tmp = tmp->next;
+        }
+        last->next = tmp->next;
     }
-    last->next = tmp->next;
-    free(tmp);
 }
 
-void printList(struct Element **base) {
-    struct Element *tmp = *base;
+void printList(const struct LinkedList *list) {
+    struct Element *tmp = list->head;
     printf("List:\n");
     do {
+        printf("\n");
         printf("Name: %s\n", tmp->name);
         printf("Age: %i\n", tmp->age);
-        printf("ID: %i\n\n", tmp->id);
+        printf("ID: %i\n", tmp->id);
         tmp = tmp->next;
     } while (tmp != nullptr);
     printf("End of list\n\n");
@@ -117,14 +128,13 @@ void linked_list() {
         scanf("%d", &newItem);
         printf("\n");
     }
-    current = list.head;
-    printList(&current);
+    printList(&list);
     current = list.head;
     printf("Deleting List:\n");
     do {
         removeElementFromList(&list, current->id);
-        printList(&current);
-        free(current->next);
+        printList(&list);
         current = current->next;
+        counter++;
     } while (current != nullptr);
 }
