@@ -112,14 +112,47 @@ void printList(const struct LinkedList *list) {
     printf("============================================================\n");
 }
 
+void sortList(struct LinkedList *list) {
+    // TODO: implement
+}
+
+void insertIntoList(struct LinkedList *list, struct Element *new, const int position) {
+    struct Element *tmp = list->head;
+    if (tmp->id == position) {
+        // Position is 0
+        new->next = tmp->next;
+        list->head = new;
+    } else {
+        while (tmp->id != position - 1) {
+            if (tmp->next == nullptr) {
+                // ID out of bound of list
+                return;
+            }
+            tmp = tmp->next;
+        }
+        new->next = tmp->next;
+        tmp->next = new;
+    }
+    new->id = tmp->id + 1;
+    if (new->id != position) {
+        printf("ID passt nicht");
+    }
+    while (tmp->next != nullptr) {
+        tmp->id++;
+        tmp = tmp->next;
+    }
+}
+
 // REMEMBER: Works only outside of function
 int id_counter = 0;
 
 void linked_list() {
+    // Creating List
     struct LinkedList list;
     list.head = nullptr;
     int newItem = 1;
     struct Element *current;
+    // filling list / adding elements
     while (newItem) {
         current = malloc(sizeof(struct Element));
         printf("Name: ");
@@ -138,6 +171,26 @@ void linked_list() {
         printf("\n");
     }
     printList(&list);
+
+    // Inserting element
+    printf("Element to add:\n");
+    current = malloc(sizeof(struct Element));
+    printf("Name: ");
+    scanf("%s", &current->name);
+    printf("Age: ");
+    scanf("%i", &current->age);
+    current->id = id_counter++;
+    current->next = nullptr;
+    printf("place to insert: ");
+    int insert_at = 0;
+    scanf("%d", &insert_at);
+    insertIntoList(&list, current, insert_at);
+    printf("\n");
+    printf("List with inserted element:\n");
+    printList(&list);
+    printf("\n");
+
+    // Deleting list
     current = list.head;
     printf("Deleting List:\n");
     do {
