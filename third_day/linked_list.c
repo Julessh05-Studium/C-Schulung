@@ -118,7 +118,7 @@ int id_counter = 0;
 void linked_list() {
     struct LinkedList list;
     list.head = nullptr;
-    bool newItem = true;
+    int newItem = 1;
     struct Element *current;
     while (newItem) {
         current = malloc(sizeof(struct Element));

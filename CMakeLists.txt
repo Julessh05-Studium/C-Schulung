@@ -18,4 +18,5 @@ add_executable(
         third_day/third.h
         third_day/data_types.c
         third_day/linked_list.c
+        fourth_day/fourth.h
 )
