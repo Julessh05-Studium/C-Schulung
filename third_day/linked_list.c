@@ -94,7 +94,7 @@ void removeElementFromList(struct LinkedList *list, const int id) {
 
 void printList(const struct LinkedList *list) {
     if (list->head == nullptr) {
-        // List is empty
+        // list is empty
         printf("List is empty\n");
         return;
     }
@@ -110,10 +110,6 @@ void printList(const struct LinkedList *list) {
     } while (tmp != nullptr);
     printf("\nEnd of list\n\n");
     printf("============================================================\n");
-}
-
-void sortList(struct LinkedList *list) {
-    // TODO: implement
 }
 
 /// Inserts an element into the list, at the given position and updates the following index
