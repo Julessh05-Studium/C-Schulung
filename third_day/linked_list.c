@@ -116,6 +116,7 @@ void sortList(struct LinkedList *list) {
     // TODO: implement
 }
 
+/// Inserts an element into the list, at the given position and updates the following index
 void insertIntoList(struct LinkedList *list, struct Element *new, const int position) {
     struct Element *tmp = list->head;
     if (tmp->id == position) {
@@ -133,14 +134,12 @@ void insertIntoList(struct LinkedList *list, struct Element *new, const int posi
         new->next = tmp->next;
         tmp->next = new;
     }
-    new->id = tmp->id + 1;
-    if (new->id != position) {
-        printf("ID passt nicht");
-    }
-    while (tmp->next != nullptr) {
+    new->id = position;
+    tmp = new->next;
+    do {
         tmp->id++;
         tmp = tmp->next;
-    }
+    } while (tmp != nullptr);
 }
 
 // REMEMBER: Works only outside of function
