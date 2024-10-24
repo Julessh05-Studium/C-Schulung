@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "third.h"
 
@@ -34,16 +35,6 @@ struct LinkedList {
     int length;
 };
 
-
-void append(struct Element **base, struct Element *new) {
-    struct Element *tmp = *base;
-    while (tmp->next != nullptr) {
-        tmp = tmp->next;
-    }
-    tmp->next = new;
-    new->next = nullptr;
-}
-
 void appendToList(struct LinkedList *list, struct Element *new) {
     struct Element *tmp = list->head;
     if (tmp == nullptr) {
@@ -55,18 +46,7 @@ void appendToList(struct LinkedList *list, struct Element *new) {
         tmp->next = new;
         new->next = nullptr;
     }
-}
-
-// TODO: work on (work in progress)
-void removeNextElement(struct Element **base, const int id) {
-    struct Element *last = nullptr;
-    struct Element *tmp = *base;
-    while (tmp->id != id) {
-        last = tmp;
-        tmp = tmp->next;
-    }
-    last->next = tmp->next;
-    free(tmp);
+    list->length++;
 }
 
 void removeElementFromList(struct LinkedList *list, const int id) {
@@ -90,6 +70,7 @@ void removeElementFromList(struct LinkedList *list, const int id) {
         }
         last->next = tmp->next;
     }
+    list->length--;
 }
 
 void printList(const struct LinkedList *list) {
@@ -136,6 +117,36 @@ void insertIntoList(struct LinkedList *list, struct Element *new, const int posi
         tmp->id++;
         tmp = tmp->next;
     } while (tmp != nullptr);
+    list->length++;
+}
+
+/// Sorts the List alphabetically
+void sortList(struct LinkedList *list) {
+    // only used to keep outer iteration running
+    const struct Element *current_outer = list->head;
+    struct Element *current_inner = list->head;
+    struct Element *last = nullptr;
+    // If head is only element, loop not entered => list already sorted
+    while (current_outer->next != nullptr) {
+        while (current_inner != nullptr) {
+            if (strcmp(current_inner->name, current_inner->next->name) != 0) {
+                struct Element *next = current_inner->next;
+                if (last == nullptr) {
+                    struct Element *old_head = list->head;
+                    list->head = next;
+                    old_head->next = next->next;
+                    next->next = current_inner;
+                } else {
+                    last->next = next;
+                    current_inner->next = next->next;
+                    next->next = current_inner;
+                }
+            }
+            last = current_inner;
+            current_inner = current_inner->next;
+        }
+        current_outer = current_outer->next;
+    }
 }
 
 // REMEMBER: Works only outside of function
@@ -144,6 +155,7 @@ int id_counter = 0;
 void linked_list() {
     // Creating List
     struct LinkedList list;
+    list.length = 0;
     list.head = nullptr;
     int newItem = 1;
     struct Element *current;
@@ -168,6 +180,7 @@ void linked_list() {
     printList(&list);
 
     // Inserting element
+    /*
     printf("Element to add:\n");
     current = malloc(sizeof(struct Element));
     printf("Name: ");
@@ -184,6 +197,12 @@ void linked_list() {
     printf("List with inserted element:\n");
     printList(&list);
     printf("\n");
+    */
+
+    // Sorting List alphabetically
+    sortList(&list);
+    printf("Sorted List:\n");
+    printList(&list);
 
     // Deleting list
     current = list.head;
