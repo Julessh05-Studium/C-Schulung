@@ -55,14 +55,14 @@ void removeElementFromList(struct LinkedList *list, const int id) {
         if (id == tmp->id) {
             list->head = nullptr;
         }
-        // only one element, not same id, return from func
+        // only one element, different id, return from func
     } else if (id == tmp->id) {
         list->head = tmp->next;
     } else {
         struct Element *last = nullptr;
         while (tmp->id != id) {
             if (tmp->next == nullptr) {
-                // ID not found in list
+                // ID not found in the list
                 return;
             }
             last = tmp;
@@ -75,7 +75,7 @@ void removeElementFromList(struct LinkedList *list, const int id) {
 
 void printList(const struct LinkedList *list) {
     if (list->head == nullptr) {
-        // list is empty
+        // the list is empty
         printf("List is empty\n");
         return;
     }
@@ -93,7 +93,7 @@ void printList(const struct LinkedList *list) {
     printf("============================================================\n");
 }
 
-/// Inserts an element into the list, at the given position and updates the following index
+/// Inserts an element into the list at the given position and updates the following index
 void insertIntoList(struct LinkedList *list, struct Element *new, const int position) {
     struct Element *tmp = list->head;
     if (tmp->id == position) {
@@ -103,7 +103,7 @@ void insertIntoList(struct LinkedList *list, struct Element *new, const int posi
     } else {
         while (tmp->id != position - 1) {
             if (tmp->next == nullptr) {
-                // ID out of bound of list
+                // ID out-of-list bound
                 return;
             }
             tmp = tmp->next;
@@ -120,32 +120,112 @@ void insertIntoList(struct LinkedList *list, struct Element *new, const int posi
     list->length++;
 }
 
+void sortWith4(struct LinkedList *list) {
+    bool elementChanged = true;
+    while (elementChanged) {
+        struct Element *first = list->head;
+        struct Element *second = first->next;
+        struct Element *entryPoint = list->head;
+        elementChanged = false;
+        while (true) {
+            if (second == nullptr) {
+                break;
+            }
+            printf("Comparing %s and %s:\n", first->name, second->name);
+
+            if (strcmp(first->name, second->name) > 0) {
+                printf("Changing Elements\n");
+                struct Element *newFirst = second;
+                if (list->head == first) {
+                    list->head = second;
+                } else {
+                    entryPoint->next = second;
+                }
+                struct Element *third = second->next;
+                second->next = first;
+                first->next = third;
+
+                first = newFirst;
+                second = first->next;
+                elementChanged = true;
+            }
+            entryPoint = first;
+            first = second;
+            second = first->next;
+        }
+    }
+}
+
 /// Sorts the List alphabetically
 void sortList(struct LinkedList *list) {
     // only used to keep outer iteration running
     const struct Element *current_outer = list->head;
-    struct Element *current_inner = list->head;
     struct Element *last = nullptr;
-    // If head is only element, loop not entered => list already sorted
-    while (current_outer->next != nullptr) {
+    // If head is only element, won't enter loop => the list already sorted
+    while (current_outer != nullptr) {
+        struct Element *current_inner = list->head;
         while (current_inner != nullptr) {
-            if (strcmp(current_inner->name, current_inner->next->name) != 0) {
-                struct Element *next = current_inner->next;
-                if (last == nullptr) {
-                    struct Element *old_head = list->head;
-                    list->head = next;
-                    old_head->next = next->next;
-                    next->next = current_inner;
+            struct Element *next = current_inner->next;
+            if (next != nullptr) {
+                fprintf(stderr, "CurrentInner: %s, Next: %s\n", current_inner->name, next->name);
+                if (strcmp(current_inner->name, next->name) > 0) {
+                    if (last == nullptr) {
+                        struct Element *old_head = list->head;
+                        list->head = next;
+                        current_outer = list->head;
+                        old_head->next = next->next;
+                        next->next = current_inner;
+                    } else {
+                        last->next = next;
+                        current_inner->next = next->next;
+                        next->next = current_inner;
+                    }
+                    last = next;
                 } else {
-                    last->next = next;
-                    current_inner->next = next->next;
-                    next->next = current_inner;
+                    current_inner = next;
                 }
+            } else {
+                current_inner = next;
             }
-            last = current_inner;
-            current_inner = current_inner->next;
+            printList(list);
         }
         current_outer = current_outer->next;
+        last = nullptr;
+    }
+}
+
+void sortListGPT(struct LinkedList *list) {
+    if (list->head == NULL || list->head->next == NULL) {
+        return; // Leere Liste oder nur ein Element
+    }
+    int sorted = 0; // Flag, um zu prüfen, ob die Liste vollständig sortiert ist
+    while (!sorted) {
+        sorted = 1; // Wir gehen davon aus, dass die Liste sortiert ist, bis wir einen Tausch finden
+        struct Element *last = NULL;
+        struct Element *current_inner = list->head;
+        while (current_inner->next != NULL) {
+            if (strcmp(current_inner->name, current_inner->next->name) > 0) {
+                // Vertausche benachbarte Elemente
+                struct Element *next = current_inner->next;
+                if (last == NULL) {
+                    // Wir sind am Kopf der Liste
+                    list->head = next;
+                } else {
+                    // last zeigt auf das vorherige Element
+                    last->next = next;
+                }
+                current_inner->next = next->next;
+                next->next = current_inner;
+                // Ein Tausch hat stattgefunden, also ist die Liste noch nicht sortiert
+                sorted = 0;
+                // last zeigt jetzt auf das vertauschte Element
+                last = next;
+            } else {
+                // Kein Tausch, weiter zum nächsten Element
+                last = current_inner;
+                current_inner = current_inner->next;
+            }
+        }
     }
 }
 
@@ -201,6 +281,7 @@ void linked_list() {
 
     // Sorting List alphabetically
     sortList(&list);
+    //sortWith4(&list);
     printf("Sorted List:\n");
     printList(&list);
 
